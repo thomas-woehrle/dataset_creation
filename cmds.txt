@@ -1,0 +1,5 @@
+cd /home/tomwoe/Documents/dataset_creation
+
+Usage:
+source script.sh <bagfiles_input_directory> <output_directory> 
+source script.sh /home/tomwoe/Documents/ /home/tomwoe/Documents/dataset_creation/output
