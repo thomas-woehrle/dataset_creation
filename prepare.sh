@@ -2,7 +2,7 @@
 
 # Check for the correct number of arguments
 if [ "$#" -ne 2 ]; then
-    echo "Usage: $0 <output_folder> <bagfile_folder>. Has to be absolute paths."
+    echo "Usage: $0 <bagfile_folder> <output_folder>. Has to be absolute paths."
     exit 1
 fi
 
@@ -35,5 +35,5 @@ done
 
 # example usage:
 # source script.sh <bagfiles_input_directory> <output_directory> 
-# -> not sure if the directories could be supplied as relative paths...
+# -> not sure if the directories could be supplied as relative paths as well...
 # source script.sh /home/tomwoe/Documents/ /home/tomwoe/Documents/dataset_creation/output
