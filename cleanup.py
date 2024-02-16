@@ -14,8 +14,14 @@ def main():
     args = parser.parse_args()
 
     input_dir = args.input_dir
+    print('##########################')
+    print('Cleaning up:', os.path.abspath(input_dir))
     labels_file = os.path.join(input_dir, 'labels.csv')
     heuristic_dir = os.path.join(input_dir, 'heuristic')
+    if not os.path.exists(heuristic_dir):
+        print('No heuristic_dir found at:', os.path.abspath(heuristic_dir))
+        print('Abort cleanup...')
+        return
 
     temp_file = tempfile.NamedTemporaryFile(mode='w', delete=False, newline='')
 
@@ -33,7 +39,6 @@ def main():
             image_name = row[0]
             image_file = os.path.join(
                 heuristic_dir, image_name[:-4] + '_w_lines.png')
-            print(image_file)
             if not os.path.exists(image_file):
                 os.remove(os.path.join(input_dir, image_name))
                 continue
@@ -41,7 +46,9 @@ def main():
 
     # Replace the original file with the temporary file
     shutil.move(temp_file.name, labels_file)
+    print('Updated:', os.path.abspath(labels_file))
     shutil.rmtree(heuristic_dir)
+    print('Removed:', os.path.abspath(heuristic_dir))
 
 
 if __name__ == '__main__':
