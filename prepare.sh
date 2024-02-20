@@ -22,7 +22,7 @@ for bagfile in "$bagfile_folder"/*.bag; do
   mkdir -p "$output_folder/$bagfile_name"
   
   # Convert the bag file to CSV
-  python3 rosbag2csv/rosbag2csv.py "$bagfile" 2 ./topics.json -o "$output_folder/$bagfile_name/"
+  python3 rosbag2csv/rosbag2csv.py "$bagfile" 1 ./topics.json -o "$output_folder/$bagfile_name/"
   mv "$output_folder/$bagfile_name/left--image_rect_color--compressed" "$output_folder/$bagfile_name/left_cam"
   mv "$output_folder/$bagfile_name/right--image_rect_color--compressed" "$output_folder/$bagfile_name/right_cam"
   
