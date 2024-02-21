@@ -33,11 +33,11 @@ info_file="$input_directory/cleanup_info.txt"
 if [ ! -e "$info_file" ]; then
     num_after=$(count_files "$input_directory")
     current_date=$(date +"%Y-%m-%d %H:%M:%S")
-    echo -e "Number of files before (includes /heuristic contents): $num_before 
-Number of files after: $num_after
-    \nHeuristic accuracy of 100% would equal: Number of files after = 0.5 * $num_before 
-Actual Heuristic accuracy approximation: $num_after / (0.5 * $num_before): 
-    \nApproximated accuracy of heuristic: $(echo "$num_after / ($num_before * 0.5)" | bc -l)
+    echo -e "Number of files before cleanup(includes /heuristic contents): $num_before 
+Number of files after cleanup: $num_after
+    \nHeuristic accuracy of 100% would equal: Number of files after = Number of files before - Number of files after.
+Actual Heuristic accuracy approximation: $num_after / ($num_before - $num_after): 
+    \nApproximated accuracy of heuristic: $(echo "$num_after / ($num_before - $num_after)" | bc -l)
     \nDate of cleanup: $current_date" > "$info_file"
     echo "Info file created."
 else
