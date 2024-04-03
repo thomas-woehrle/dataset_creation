@@ -39,10 +39,8 @@ def main():
             image_name = row[0]
             image_file = os.path.join(
                 heuristic_dir, image_name[:-4] + '_w_lines.png')
-            if not os.path.exists(image_file):
-                os.remove(os.path.join(input_dir, image_name))
-                continue
-            writer.writerow(row)
+            if os.path.exists(image_file):
+                writer.writerow(row)    
 
     # Replace the original file with the temporary file
     shutil.move(temp_file.name, labels_file)
