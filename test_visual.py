@@ -32,7 +32,10 @@ def main():
     for file in files:
         full_path = os.path.join(input_dir, file)
         np_array, image = process_image(full_path)
-        csv_row = df[df['image_name'] == file].iloc[0]
+        csv_row = df[df['image_name'] == file]
+        if csv_row.empty:
+            continue
+        csv_row = csv_row.iloc[0]
         vp = to_tuple(csv_row[1])
         ll = to_tuple(csv_row[2])
         lr = to_tuple(csv_row[3])
